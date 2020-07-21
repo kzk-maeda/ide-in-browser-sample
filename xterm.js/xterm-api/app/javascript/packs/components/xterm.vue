@@ -4,11 +4,13 @@
 </template>
 <script>
     import { Terminal } from 'xterm';
+    import { AttachAddon } from 'xterm-addon-attach';
     
     export default {
         data: function() {
             return {
                 term: null,
+                attachAddon: null,
                 terminalChannel: null,
                 prompt: '\x1B[1;3;31mxterm.js\x1B[0m $ '
             }
@@ -29,6 +31,7 @@
         },
         mounted: function() {
             this.term = new Terminal();
+            this.attachAddon = new AttachAddon(this.$cable);
             this.term.open(document.getElementById('terminal'));
             this.openTerms(this.term);
         },
