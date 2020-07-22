@@ -2,7 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+#editor-terminal {
+    width: 100%;
+}
+
 #terminal {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#editor {
+    height: 400px;
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
