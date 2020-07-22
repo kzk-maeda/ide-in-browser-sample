@@ -30,7 +30,11 @@
             
             var editor = ace.edit("ace-edit");
             editor.getSession().setMode("ace/mode/javascript");
-            editor.setTheme("ace/theme/twilight");
+            editor.setTheme("ace/theme/solarized_dark");
+            editor.setOptions({
+                vScrollBarAlwaysVisible: true,
+                copyWithEmptySelection: true,
+            });
             
         },
     }
