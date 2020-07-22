@@ -1,9 +1,7 @@
 <div id="app">
     <header-bar></header-bar>
     <div id="editor-terminal">
-        <div id="editor">
-            <editor v-model="content" @init="editorInit" lang="html" theme="chrome"></editor>
-        </div>
+        <ace-editor></ace-editor>
         <xterm></xterm>
     </div>
 </div>

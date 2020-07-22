@@ -1,24 +1,30 @@
 <template>
-    <p>editor</p>
-    <div id="editor"></div>
+    <div id="editor">
+        <editor v-model="content" @init="editorInit" lang="html" theme="chrome"></editor>
+    </div>
 </template>
 <style>
-    #editor {
-        height: 600px;
-    }
+#editor {
+    height: 400px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 </style>
 <script>
-    import ace from 'ace.js'
     export default {
-        data() {
-            return {
-                editor: null
+        components: {
+            'editor': require('vue2-ace-editor')
+        },
+        methods: {
+            editorInit: function () {
+                require('brace/ext/language_tools') //language extension prerequsite...
+                require('brace/mode/html')                
+                require('brace/mode/javascript')    //language
+                require('brace/mode/less')
+                require('brace/theme/chrome')
+                require('brace/snippets/javascript') //snippet
             }
-        },
-        created() {
-            this.editor = ace.edit("editor");
-            this.editor.setTheme("ace/theme/monokai");
-            this.editor.session.setMode("ace/mode/javascript");
-        },
+        }
     }
 </script>
