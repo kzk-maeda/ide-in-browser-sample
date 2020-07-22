@@ -1,10 +1,8 @@
 <template>
-    <div id="editor">
-        <editor v-model="content" @init="editorInit" lang="html" theme="chrome"></editor>
-    </div>
+    <div id="ace-edit"></div>
 </template>
 <style>
-#editor {
+#ace-edit {
     height: 400px;
     margin-top: 10px;
     margin-left: 10px;
@@ -13,18 +11,27 @@
 </style>
 <script>
     export default {
-        components: {
-            'editor': require('vue2-ace-editor')
+        beforeCreate() {
+            // var aceScript = document.createElement('script')
+            // aceScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js')
+            // document.body.appendChild(aceScript)
+
+            // var modeScript = document.createElement('script')
+            // modeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-javascript.js')
+            // document.body.appendChild(modeScript)
+
+            // var themeScript = document.createElement('script')
+            // themeScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-twilight.js')
+            // document.body.appendChild(themeScript)
+            
         },
-        methods: {
-            editorInit: function () {
-                require('brace/ext/language_tools') //language extension prerequsite...
-                require('brace/mode/html')                
-                require('brace/mode/javascript')    //language
-                require('brace/mode/less')
-                require('brace/theme/chrome')
-                require('brace/snippets/javascript') //snippet
-            }
-        }
+        mounted() {
+            var ace = window.ace
+            
+            var editor = ace.edit("ace-edit");
+            editor.getSession().setMode("ace/mode/javascript");
+            editor.setTheme("ace/theme/twilight");
+            
+        },
     }
 </script>
