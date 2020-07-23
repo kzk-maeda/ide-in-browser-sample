@@ -2,8 +2,8 @@
     <div id="editor-area">
         <div id="ace-edit">{{ contents }}</div>
         <div id="buttons">
-            <div class="btn" v-on:click="displayFinishedTasks">Save</div>
-            <div class="btn" v-on:click="displayFinishedTasks">Run</div>
+            <div class="btn" v-on:click="saveCode">Save</div>
+            <div class="btn" v-on:click="saveCode">Run</div>
         </div>
     </div>
 </template>
@@ -60,14 +60,10 @@
             });
 
             this.session = this.editor.session;
-            this.edit(this.session)
-        },
-        updated() {
-            console.log(this.session)
         },
         methods: {
-            edit: function(session) {
-                console.log(session.getValue)
+            saveCode: function() {
+                console.log(this.session.getValue())
             }
         },
     }
